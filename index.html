@@ -9,13 +9,13 @@
   <body class="h-[100dvh] grid grid-cols-3 grid-rows-2"> 
     <aside class="row-span-2 bg-gradient-to-r from-indigo-500 bg-emerald-300 flex flex-col justify-between py-5 px-2">
       <h1 class="text-2x1 font-bold px-6 py-2">Calculadora de investimentos</h1>
-      <form  class="w-full"> 
+      <form id="investment-form" class="w-full"> 
 
         <div class="flex w-full flex-col px-6 my-2"> 
           <label for="starting-amount" class="font-bold text-gray-700">Investimento inicial</label>
           <div class="flex">
             <input value="R$" class="w-1/6 text-center rounded-l-lg" type="text" disabled>
-            <input type="text" placeholder="0.00" class="px-2 w-5/6 rounded-r-lg"  id="starting-amount" />
+            <input type="text" placeholder="0.00" class="px-2 w-5/6 rounded-r-lg" required id="starting-amount" name="starting-amount"/>
           </div>
         </div>
 
@@ -23,15 +23,15 @@
           <label for="additional-contribution" class="font-bold text-gray-700">Aportes adicionais</label>
           <div class="flex">
             <input value="R$"  class="w-1/6 text-center rounded-l-lg" type="text" disabled>
-            <input type="text" placeholder="0.00" class="w-5/6 rounded-r-lg px-2"  id="additional-contribution" />
+            <input type="text" placeholder="0.00" class="w-5/6 rounded-r-lg px-2"  id="additional-contribution" name="additional-contribution"  />
           </div>
         </div>
 
         <div class="flex w-full flex-col px-6 my-2"> 
           <label for="time-amount" class="font-bold text-gray-700">Prazo</label>
           <div class="flex">
-            <input type="text" class="w-2/3 rounded-l-lg px-2"  id="time-amount" />
-            <select id="time-amount-period" class="hover:bg-emerald-950 hover:text-slate-200 border-l-4 border-l-emerald-600 text-center w-1/3 rounded-r-lg">
+            <input type="text" class="w-2/3 rounded-l-lg px-2" required id="time-amount" name="time-amount"/>
+            <select id="time-amount-period" name="time-amount-period" class="hover:bg-emerald-950 hover:text-slate-200 border-l-4 border-l-emerald-600 text-center w-1/3 rounded-r-lg">
               <option value="monthly">Mensal</option>
               <option value="yearly">Anual</option>
             </select>
@@ -42,8 +42,8 @@
           <label for="return-rate" class="font-bold text-gray-700">Rentabilidade</label>
           <div class="flex">
             <input value="%"  class="w-1/6 text-center rounded-l-lg" type="text" disabled>
-            <input type="text" class="w-1/2 px-2"  id="return-rate" />
-            <select id="evaluation-period" class="hover:bg-emerald-950 hover:text-slate-200 border-l-4 border-l-emerald-600 text-center w-1/3 rounded-r-lg">
+            <input type="text" class="w-1/2 px-2" required id="return-rate"  name="return-rate"/>
+            <select id="evaluation-period"  name="starting-amount" class="hover:bg-emerald-950 hover:text-slate-200 border-l-4 border-l-emerald-600 text-center w-1/3 rounded-r-lg">
               <option value="monthly">Mensal</option>
               <option value="yearly">Anual</option>
             </select>
@@ -54,12 +54,12 @@
           <label for="tax-rate" class="font-bold text-gray-700">Impostos sobre lucro</label>
           <div class="flex">
             <input value="%"  class="w-1/6 text-center rounded-l-lg" type="text" disabled>
-            <input type="text" class="w-5/6 rounded-r-lg px-2" id="tax-rate" />
+            <input type="text" class="w-5/6 rounded-r-lg px-2" required id="tax-rate" name="tax-rate"/>
           </div>
         </div>
       </form>
       <div class="flex h-12 px-6 my-8 w-full gap-2">
-        <button class="w-1/2 rounded-lg bg-emerald-950 text-slate-200 hover:bg-emerald-800">Calcular</button>
+        <button id="calculate-results" form="investment-form" type="submit" class="w-1/2 rounded-lg bg-emerald-950 text-slate-200 hover:bg-emerald-800">Calcular</button>
         <button class="w-1/2 rounded-lg hover:bg-emerald-500">Limpar</button>
       </div>
       </aside>
@@ -67,5 +67,6 @@
     <main>
       <p>resultados</p>
     </main>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>

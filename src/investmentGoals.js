@@ -3,7 +3,7 @@ function convertToMounthlyReturnRate(yearlyReturnRate) {
 
 }
 
-function generateReturnsArray(startingAmount = 0, timeHorizon = 0, timePeriod = 'monthly', monthlyContribution = 0, returnRate = 0, returnTimeFrame = 'monthly', ) {
+export function generateReturnsArray(startingAmount = 0, timeHorizon = 0, timePeriod = 'monthly', monthlyContribution = 0, returnRate = 0, returnTimeFrame = 'monthly', ) {
     if (!timeHorizon || !startingAmount) {
         throw new Error("Investimento inicial e prazo devem ser preenchidos com valores positivos");     
     }
@@ -22,6 +22,18 @@ function generateReturnsArray(startingAmount = 0, timeHorizon = 0, timePeriod = 
 
     const returnsArray = [referenceInvestmentObject];
     for (let timeReference = 1; timeReference <= finalTimeHorizon; timeReference++){
-        const totalAmount = (returnsArray[timeReference - 1].totalAmount * finalReturnRate)
+        const totalAmount = (returnsArray[timeReference - 1].totalAmount * finalReturnRate) + monthlyContribution;
+        const interestReturns = returnsArray[timeReference - 1].totalAmount * finalReturnRate;
+        const investedAmount = startingAmount + monthlyContribution * timeReference;
+        const totalInterstReturns = totalAmount - investedAmount;
+        returnsArray.push({
+            investedAmount, 
+            interestReturns,
+            totalInterstReturns,
+            month: timeReference,
+            totalAmount,
+        });
     }
+
+    return returnsArray;
 }
