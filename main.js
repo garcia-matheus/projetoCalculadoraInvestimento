@@ -10,7 +10,7 @@ function renderProgression(evt) {
         return;
     }
         // const startingAmount = Number(form['starting-amount'].value)
-    const startingAmount = Number(document.getElementById('starting-amount').value.replace(",", "."));
+    const startingAmount = Number(document.getElementById('starting-amount').value.replace(',', '.'));
     const additionalContribution = Number(document.getElementById('additional-contribution').value.replace(",", "."));
     const timeAmount = Number(document.getElementById('time-amount').value);
     const timeAmountPeriod = document.getElementById('time-amount-period').value;
